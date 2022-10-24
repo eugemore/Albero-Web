@@ -1,0 +1,10 @@
+<div *ngFor="let member of familyMembers; index as i; last as isLast">
+  <app-member-card
+    [member]="member"
+    [editionBlocked]="editionBlocked"
+    [last]="isLast"
+    (addMemberOutput)="addMember(false)"
+    (deleteMemberOutput)="deleteMember(i)"
+    (editingOutput)="editMember(i)">
+  </app-member-card>
+</div>

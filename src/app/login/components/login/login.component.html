@@ -1,0 +1,2 @@
+<app-login-card *ngIf="!signup" (signupOutput)="toggleCard()"></app-login-card>
+<app-signup-card *ngIf="signup" (signupOutput)="toggleCard()"></app-signup-card>

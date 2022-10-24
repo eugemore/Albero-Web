@@ -1,0 +1,33 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <h2>Registrazione</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Conferma Password</mat-label>
+        <input matInput type="password" formControlName="confirmPassword">
+      </mat-form-field>
+
+    </form>
+    <p *ngIf="signUpError">
+      {{ signUpError }}
+    </p>
+  </mat-card-content>
+  
+  <mat-card-actions>
+    <button mat-stroked-button color="primary" (click)="signupOutput.emit()">Ho un conto</button>
+    <button mat-raised-button [disabled]="!this.form.valid" color="primary" (click)="signup()">Registrare</button>
+  </mat-card-actions>
+
+</mat-card>

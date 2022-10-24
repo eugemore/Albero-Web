@@ -1,0 +1,30 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ memberInput.firstName + ' ' + (memberInput.middleNames || '') + ' ' + memberInput.lastName }}</mat-card-title>
+    <mat-card-subtitle>{{memberInput.avo? 'Avo' : ''}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <p>Nato a: {{ memberInput.birth_date | date : 'longDate' }}</p>
+      <p>Nazionalitá: {{ memberInput.nationality }}</p>
+      <p>Stato civile: {{ memberInput.status }}</p>
+      <p>Genero: {{ memberInput.gender == 'M'? 'Maschile' : 'Femminile' }}</p>
+      <p>vivo: {{ memberInput.alive? 'Si': 'No' }}</p>
+      <p>documenti: {{ memberInput?.documents?.length || 0 }}</p>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div>
+      <button [disabled]="this.editionBlocked" mat-icon-button color="primary" (click)="toggleEdit()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit-square"></mat-icon>
+      </button>
+      <button [disabled]="this.editionBlocked" mat-icon-button color="primary">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
+      </button>
+      <button *ngIf="last" mat-icon-button color="primary" (click)="addMember()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

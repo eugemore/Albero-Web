@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Edizione di Miembro</h1>
+<div mat-dialog-content>
+  <form [formGroup]="memberForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cognome</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mezzonomi</mat-label>
+      <input matInput formControlName="middleNames">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nato a</mat-label>
+      <input matInput formControlName="birth_date" [matDatepicker]="picker">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nazionalitá</mat-label>
+      <mat-select formControlName="nationality">
+        <mat-option *ngFor="let option of nationalityOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Genero</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let option of genderOptions" [value]="option.value">{{ option.desc }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Stato civile:</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vivo</mat-label>
+      <mat-select formControlName="alive">
+        <mat-option [value]="true">Si</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="cancel()">Cancelare</button>
+  <button mat-raised-button [disabled]="!this.memberForm.valid" color="primary" (click)="save()">Guardare</button>
+</div>
